@@ -1,9 +1,16 @@
 export const mockApi = {
+  login: (simulateError = false): Promise<Response> =>
+    new Promise((resolve) =>
+      setTimeout(() => {
+        const response = createResponse(null, simulateError ? 500 : 200);
+
+        resolve(response);
+      }, 500)
+    ),
   me: (simulateError = false): Promise<Response> =>
     new Promise((resolve) =>
       setTimeout(() => {
         const data = { name: "Night Man", permissions: [1, 2, 3] };
-
         const response = createResponse(data, simulateError ? 500 : 200);
 
         resolve(response);
