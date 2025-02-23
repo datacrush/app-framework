@@ -1,16 +1,13 @@
 import { useNavigate } from "react-router";
 import { login } from "../../services/auth";
-import { useUser } from "../../context/user";
 
 export const Login: React.FC = () => {
-  const { dispatch } = useUser();
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    const user = await login();
+    const response = await login();
 
-    if (user) {
-      dispatch({ type: "LOGIN", payload: user });
+    if (response?.ok) {
       navigate("/home");
     }
   };

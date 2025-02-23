@@ -1,10 +1,9 @@
-import { User } from "../context/user";
 import { mockApi } from "../lib/mock-api";
 
-export const login = async (): Promise<User> => {
-  const response = await mockApi.me();
+export const login = async (): Promise<Response | null> => {
+  const response = await mockApi.login();
 
-  return response.ok ? await response.json() : null;
+  return response;
 };
 
 export const logout = () => {
