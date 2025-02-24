@@ -5,7 +5,6 @@
   text-align: left;
 }
 
-
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
@@ -13,14 +12,20 @@
 }
 
 @keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
-.cheesy-blink {
-  color: yellow;
+.cheesy-blink-gradient {
+  background: linear-gradient(45deg, yellow, orange, red);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-weight: bold;
-  text-shadow: 2px 2px 5px orange;
-  animation: blink 0.8s infinite;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  animation: blink 1s infinite;
 }
