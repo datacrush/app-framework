@@ -5,11 +5,15 @@ import { PublicLayout } from "../public/Layout";
 import { SecureLayout } from "../secure/Layout";
 import ProtectedRoute from "../shared/ProtectedRoute";
 
+enum PATHS {
+  HOME = "/home",
+  ROOT = "/",
+}
+
 export default [
   {
-    path: "/",
     element: <PublicLayout />,
-    children: [{ path: "/", element: <Login /> }],
+    children: [{ path: PATHS.ROOT, element: <Login /> }],
   },
   {
     element: <ProtectedRoute />,
@@ -18,7 +22,7 @@ export default [
     children: [
       {
         element: <SecureLayout />,
-        children: [{ path: "/home", element: <Home /> }],
+        children: [{ path: PATHS.HOME, element: <Home /> }],
       },
     ],
   },
