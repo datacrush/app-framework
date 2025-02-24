@@ -1,9 +1,10 @@
 import { Outlet } from "react-router";
+import { User } from "../components/user/User";
 
 export const SecureLayout = () => {
   return (
     <div>
-      <h1>Secure Layout</h1>
+      <User />
       <Outlet />
     </div>
   );

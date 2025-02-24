@@ -1,5 +1,5 @@
 export const mockApi = {
-  login: (simulateError = false): Promise<Response> =>
+  authenticate: (simulateError = false): Promise<Response> =>
     new Promise((resolve) =>
       setTimeout(() => {
         const response = createResponse(null, simulateError ? 500 : 200);
@@ -7,11 +7,23 @@ export const mockApi = {
         resolve(response);
       }, 500)
     ),
-  me: (simulateError = false): Promise<Response> =>
+
+  me: (): Promise<Response> =>
     new Promise((resolve) =>
       setTimeout(() => {
-        const data = { name: "Night Man", permissions: [1, 2, 3] };
-        const response = createResponse(data, simulateError ? 500 : 200);
+        const authenticated = localStorage.getItem("authenticated") === "true";
+        const simulateError = !authenticated;
+        const data = { name: "Frank Reynolds", permissions: [1, 2, 3] };
+        const response = createResponse(data, simulateError ? 401 : 200);
+
+        resolve(response);
+      }, 500)
+    ),
+
+  logout: (simulateError = false): Promise<Response> =>
+    new Promise((resolve) =>
+      setTimeout(() => {
+        const response = createResponse(null, simulateError ? 500 : 200);
 
         resolve(response);
       }, 500)
