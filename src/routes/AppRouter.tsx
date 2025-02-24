@@ -6,6 +6,7 @@ import { PublicLayout } from "../public/Layout";
 import { SecureLayout } from "../secure/Layout";
 import ProtectedRoute from "../shared/ProtectedRoute";
 import { PATHS } from "../types";
+import { Http404 } from "../components/error/Http404";
 
 export default [
   {
@@ -23,7 +24,7 @@ export default [
         children: [
           { path: PATHS.HOME, element: <Home /> },
           { index: true, element: <Navigate to={PATHS.HOME} replace /> },
-          { path: "*", element: <p>Page not found</p> },
+          { path: "*", element: <Http404 /> },
         ],
       },
     ],
