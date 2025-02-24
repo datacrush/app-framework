@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import { login } from "../../services/auth";
 import { useLoading } from "../../shared/use-loading";
+import { PATHS } from "../../types";
 
 export const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ export const Login: React.FC = () => {
     const response = await login();
 
     if (response?.ok) {
-      navigate("/home");
+      navigate(PATHS.SECURE);
     }
   });
 
