@@ -14,7 +14,7 @@ export const Login: React.FC = () => {
 
   return (
     <div>
-      <h1>Login</h1>
+      <h1>Welcome to TBD</h1>
       <button onClick={handleLogin}>Log in</button>
     </div>
   );
