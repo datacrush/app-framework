@@ -1,16 +1,19 @@
-import { useNavigate } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
+
 import { login } from "../../services/auth";
 import { useLoading } from "../../shared/use-loading";
 import { PATHS } from "../../types";
 
 export const Login: React.FC = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const redirectTo = searchParams.get("resume") || PATHS.SECURE;
 
   const [handleLogin, loading] = useLoading(async () => {
     const response = await login();
 
     if (response?.ok) {
-      navigate(PATHS.SECURE);
+      navigate(redirectTo);
     }
   });
 
