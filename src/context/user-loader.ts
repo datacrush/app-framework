@@ -1,10 +1,8 @@
 import { redirect } from "react-router";
 
-import { mockApi } from "../lib/mock-api";
-
 export const userLoader = async ({ request }: { request: Request }) => {
   try {
-    const response = await mockApi.me();
+    const response = await fetch("/api/me");
 
     if (!response.ok) {
       const url = new URL(request.url);

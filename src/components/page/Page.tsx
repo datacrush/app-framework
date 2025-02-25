@@ -1,7 +1,6 @@
 import React, { JSX, useEffect, useState } from "react";
-import { Config } from "../../types";
 import { map } from "../../shared/component-map";
-import { mockApi } from "../../lib/mock-api";
+import { Config } from "../../types";
 
 // import { isValidElementType } from "react-is";
 // Explore using this for any html element: isValidElementType(elementName)
@@ -20,7 +19,7 @@ export const Page: React.FC<PageProps> = ({ url }) => {
 
   useEffect(() => {
     setLoading(true);
-    mockApi[url]()
+    fetch(url)
       .then(async (response) => {
         if (!response.ok) {
           throw new Error(`Failed to load config: ${response.status}`);

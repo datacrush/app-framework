@@ -1,7 +1,7 @@
 import { PATHS } from "../types";
 
 export const mockApi: Record<string, (...args: any[]) => Promise<Response>> = {
-  authenticate: (simulateError = false): Promise<Response> =>
+  "/api/authenticate": (simulateError = false): Promise<Response> =>
     new Promise((resolve) =>
       setTimeout(() => {
         const response = createResponse(null, simulateError ? 500 : 200);
@@ -10,7 +10,7 @@ export const mockApi: Record<string, (...args: any[]) => Promise<Response>> = {
       }, 500)
     ),
 
-  me: (): Promise<Response> =>
+  "/api/me": (): Promise<Response> =>
     new Promise((resolve) =>
       setTimeout(() => {
         const authenticated = localStorage.getItem("authenticated") === "true";
@@ -22,7 +22,7 @@ export const mockApi: Record<string, (...args: any[]) => Promise<Response>> = {
       }, 500)
     ),
 
-  logout: (simulateError = false): Promise<Response> =>
+  "/api/logout": (simulateError = false): Promise<Response> =>
     new Promise((resolve) =>
       setTimeout(() => {
         const response = createResponse(null, simulateError ? 500 : 200);
@@ -31,7 +31,7 @@ export const mockApi: Record<string, (...args: any[]) => Promise<Response>> = {
       }, 500)
     ),
 
-  test: (simulateError = false): Promise<Response> =>
+  "/api/ui/example": (simulateError = false): Promise<Response> =>
     new Promise((resolve) =>
       setTimeout(() => {
         const data = {

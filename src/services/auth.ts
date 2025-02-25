@@ -1,7 +1,5 @@
-import { mockApi } from "../lib/mock-api";
-
 export const login = async (): Promise<Response | null> => {
-  const response = await mockApi.authenticate();
+  const response = await fetch("/api/authenticate");
 
   if (response?.ok) {
     localStorage.setItem("authenticated", "true");
@@ -12,7 +10,7 @@ export const login = async (): Promise<Response | null> => {
 
 export const logout = async () => {
   localStorage.setItem("authenticated", "false");
-  const response = await mockApi.logout();
+  const response = await fetch("/api/logout");
 
   return response;
 };

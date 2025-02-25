@@ -5,7 +5,7 @@ export const Home: React.FC = () => {
     <div>
       <h1>Home</h1>
 
-      <Page url={"test"} />
+      <Page url={"/api/ui/example"} />
     </div>
   );
 };
