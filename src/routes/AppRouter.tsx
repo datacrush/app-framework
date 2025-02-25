@@ -1,12 +1,15 @@
+import { lazy } from "react";
+
 import { Navigate } from "react-router";
-import { Home } from "../components/home/Home";
-import { Login } from "../components/login/Login";
+import { Http404 } from "../components/error/Http404";
 import { userLoader } from "../context/user-loader";
 import { PublicLayout } from "../public/Layout";
 import { SecureLayout } from "../secure/Layout";
 import ProtectedRoute from "../shared/ProtectedRoute";
 import { PATHS } from "../types";
-import { Http404 } from "../components/error/Http404";
+
+const Home = lazy(() => import("../components/home/Home"));
+const Login = lazy(() => import("../components/login/Login"));
 
 export default [
   {

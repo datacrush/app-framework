@@ -1,4 +1,6 @@
-import { Page } from "../page/Page";
+import { lazy } from "react";
+
+const Page = lazy(() => import("../page/Page"));
 
 export const Home: React.FC = () => {
   return (
