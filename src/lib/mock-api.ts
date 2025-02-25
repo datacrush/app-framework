@@ -1,4 +1,6 @@
-export const mockApi = {
+import { PATHS } from "../types";
+
+export const mockApi: Record<string, (...args: any[]) => Promise<Response>> = {
   authenticate: (simulateError = false): Promise<Response> =>
     new Promise((resolve) =>
       setTimeout(() => {
@@ -24,6 +26,26 @@ export const mockApi = {
     new Promise((resolve) =>
       setTimeout(() => {
         const response = createResponse(null, simulateError ? 500 : 200);
+
+        resolve(response);
+      }, 500)
+    ),
+
+  test: (simulateError = false): Promise<Response> =>
+    new Promise((resolve) =>
+      setTimeout(() => {
+        const data = {
+          name: "div",
+          children: [
+            {
+              name: "p",
+              props: { className: "cheesy-blink-gradient" },
+              children: ["Hello world!"],
+            },
+            { name: "link", props: { to: PATHS.ROOT }, children: ["Login"] },
+          ],
+        };
+        const response = createResponse(data, simulateError ? 500 : 200);
 
         resolve(response);
       }, 500)

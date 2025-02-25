@@ -1,7 +1,7 @@
 export type Config = {
   name: string;
-  props?: Record<string, any>;
-  children?: [Config | string];
+  props?: Record<string, any> | null;
+  children?: (Config | string)[];
 };
 
 export enum PATHS {
