@@ -36,8 +36,14 @@ export const Page: React.FC<PageProps> = ({ url }) => {
   if (error) return <div>Error: {error}</div>;
   if (!config) return <div>No configuration found</div>;
 
-  return <>{configToElements(config)}</>;
+  return (
+    <React.Suspense fallback={<div>Loading...</div>}>
+      {configToElements(config)}
+    </React.Suspense>
+  );
 };
+
+export default Page;
 
 function configToElements(config: Config): JSX.Element {
   const elementType = map[config.name] || config.name;

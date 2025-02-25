@@ -42,7 +42,11 @@ export const mockApi: Record<string, (...args: any[]) => Promise<Response>> = {
               props: { className: "cheesy-blink-gradient" },
               children: ["Hello world!"],
             },
-            { name: "link", props: { to: PATHS.ROOT }, children: ["Login"] },
+            {
+              name: "link",
+              props: { to: PATHS.ROOT },
+              children: ["Go to login"],
+            },
           ],
         };
         const response = createResponse(data, simulateError ? 500 : 200);
