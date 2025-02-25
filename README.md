@@ -6,3 +6,4 @@
 - Instead of loaders, create a useConfiguration hook to transform existing configs into arguments for `React.createElement`
 - Add global state management
 - Add notification system
+- Extract all css

@@ -1,11 +1,11 @@
 import { Config } from "../../types";
 import { Page } from "../page/Page";
 
-const welcome: Config = [
-  "div",
-  { className: "cheesy-blink-gradient" },
-  "Welcome!",
-];
+const welcome: Config = {
+  name: "div",
+  props: { className: "cheesy-blink-gradient" },
+  children: [{ name: "p", children: ["Hello world!"] }],
+};
 
 export const Home: React.FC = () => {
   return (

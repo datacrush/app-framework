@@ -1,4 +1,4 @@
-import React from "react";
+import React, { JSX } from "react";
 import { Config } from "../../types";
 
 // import { isValidElementType } from "react-is";
@@ -12,5 +12,17 @@ interface PageProps {
 }
 
 export const Page: React.FC<PageProps> = ({ config }) => {
-  return React.createElement(...config);
+  return configToElements(config);
 };
+
+function configToElements(config: Config): JSX.Element {
+  return React.createElement(
+    config.name,
+    config.props,
+    config.children?.map((child, index) =>
+      typeof child === "string"
+        ? child
+        : configToElements({ ...child, props: { ...child.props, key: index } })
+    )
+  );
+}

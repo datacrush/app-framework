@@ -36,6 +36,7 @@ a[href] {
   color: yellow;
   text-decoration: inherit;
 }
+
 a[href]:hover {
   color: orange;
 }
