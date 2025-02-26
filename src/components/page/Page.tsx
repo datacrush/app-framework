@@ -44,8 +44,15 @@ export const Page: React.FC<PageProps> = ({ url }) => {
 
 export default Page;
 
+const routeElements = ["route", "routes"];
+
 function configToElements(config: Config): JSX.Element {
   const elementType = map[config.name] || config.name;
+
+  if (routeElements.includes(config.name)) {
+    config = handleRouteElements(config);
+  }
+
   return React.createElement(
     elementType,
     config.props,
@@ -55,4 +62,16 @@ function configToElements(config: Config): JSX.Element {
         : configToElements({ ...child, props: { ...child.props, key: index } })
     )
   );
+}
+
+function handleRouteElements(config: Config) {
+  return {
+    ...config,
+    props: {
+      ...(config.props || {}),
+      element: config.props?.element
+        ? configToElements(config.props.element)
+        : null,
+    },
+  };
 }

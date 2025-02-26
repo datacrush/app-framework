@@ -44,8 +44,38 @@ export const mockApi: Record<string, (...args: any[]) => Promise<Response>> = {
             },
             {
               name: "link",
-              props: { to: PATHS.ROOT },
-              children: ["Go to login"],
+              props: { to: `${PATHS.SECURE}/${PATHS.HOME}/dynamic` },
+              children: ["Go to dynamic"],
+            },
+            {
+              name: "routes",
+              children: [
+                {
+                  name: "route",
+                  props: {
+                    path: "dynamic",
+                    element: {
+                      name: "div",
+                      children: [
+                        {
+                          name: "p",
+                          children: ["It works!"],
+                        },
+                        {
+                          name: "p",
+                          children: [
+                            {
+                              name: "link",
+                              props: { to: `${PATHS.SECURE}/${PATHS.HOME}` },
+                              children: ["Go home"],
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  },
+                },
+              ],
             },
           ],
         };

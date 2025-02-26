@@ -25,7 +25,7 @@ export default [
       {
         element: <SecureLayout />,
         children: [
-          { path: PATHS.HOME, element: <Home /> },
+          { path: `${PATHS.HOME}/*`, element: <Home /> },
           { index: true, element: <Navigate to={PATHS.HOME} replace /> },
           { path: "*", element: <Http404 /> },
         ],
