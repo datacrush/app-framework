@@ -22,3 +22,5 @@ export const User: React.FC = () => {
     </div>
   );
 };
+
+export default User;

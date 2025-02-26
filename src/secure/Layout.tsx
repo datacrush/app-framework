@@ -1,5 +1,7 @@
+import { lazy } from "react";
 import { Outlet } from "react-router";
-import { User } from "../components/user/User";
+
+const User = lazy(() => import("../components/user/User"));
 
 export const SecureLayout = () => {
   return (

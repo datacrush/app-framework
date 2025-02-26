@@ -8,4 +8,5 @@ export const map: Record<string, React.FC<any>> = {
   page: lazy(() => import("../components/page/Page")),
   route: Route,
   routes: Routes,
+  user: lazy(() => import("../components/user/User")),
 };
